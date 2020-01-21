@@ -133,11 +133,11 @@
         }
     }
     
-    //将图片中每个颜色为白色的点转化为透明色 ps 黑白转为透明色
+    //将图片中每个颜色为白色的点转化为透明色 ps 白色及其近似色转为透明色
     function imageBgTransparent2($oldSrc,$newSrc,$alpha){
-        $begin_r = 30;
-        $begin_g = 100;
-        $begin_b = 100;
+        $begin_r = 200;
+        $begin_g = 200;
+        $begin_b = 200;
         list($src_w, $src_h) = getimagesize($oldSrc);// 获取原图像信息
         $src_im = imagecreatefromjpeg($oldSrc);
         $i = 0;
@@ -152,7 +152,7 @@
                     $i ++;
                     continue;
                 }
-                if (($r <= $begin_r && $g <= $begin_g && $b <= $begin_b)) {
+                if (($r >= $begin_r && $g >= $begin_g && $b >= $begin_b)) {
                     imagefill($src_im, $x, $y, $src_white);//替换成白色
                 }
                 else{
