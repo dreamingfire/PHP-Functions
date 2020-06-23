@@ -65,3 +65,19 @@ function SQL_DEBUG( $query )
 function userFunc(...$name) {
     echo __FUNCTION__ . ", get " . implode(', ', $name) . "<br/>";
 }
+
+// 判断树是否为平衡二叉树，主要是匿名函数的递归传递方式
+function isBalanced($root) {
+        if (empty($root)) {
+            return true;
+        }
+        $maxDiff = 0;
+        $deep = function ($root) use (&$deep, &$maxDiff) {
+            $ld = empty($root->left) ? 0 : $deep($root->left);
+            $rd = empty($root->right) ? 0 : $deep($root->right);
+            $maxDiff = max(abs($ld - $rd), $maxDiff);
+            return max($ld, $rd) + 1;
+        };
+        $deep($root);
+        return $maxDiff <= 1;
+    }
