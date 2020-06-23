@@ -60,3 +60,8 @@ function SQL_DEBUG( $query )
     $SQL_INT++;
 
 } //SQL_DEBUG
+
+// 自定义不定参数函数的表示方式
+function userFunc(...$name) {
+    echo __FUNCTION__ . ", get " . implode(', ', $name) . "<br/>";
+}
