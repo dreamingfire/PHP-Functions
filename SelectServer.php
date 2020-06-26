@@ -48,7 +48,6 @@ while (true) {
     readAvaliable($readable, $read, $gc);
     writeAvaliable($writable, $write, $gc);
     gc($gc);
-    var_dump($gc);
 }
 
 function accept($socket, $acceptable, &$read, &$write)
