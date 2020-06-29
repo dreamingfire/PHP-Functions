@@ -280,3 +280,13 @@ function getFilePermsByStr($fileName) {
 
     return $info;
 }
+
+// 将UTF-8编码字符串切分成数组
+function strToArrForUTF8($str) {
+    $arr = [];
+    $length = mb_strlen($str, 'utf-8');
+    for ($i = 0; $i < $length; $i ++) {
+        $arr[] = mb_substr($str, $i, 1, 'utf-8');
+    }
+    return $arr;
+}
