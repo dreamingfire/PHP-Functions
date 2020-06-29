@@ -290,3 +290,12 @@ function strToArrForUTF8($str) {
     }
     return $arr;
 }
+
+// 将UTF-8编码字符串切分成数组，正则方式，但是有个问题是空白字符会被过滤掉
+function strToArrForUTF8ByReg($str) {
+    $pattern = "/([\x{4e00}-\x{9fa5}]|[\S])/u";
+    preg_match_all($pattern, $str, $matches);
+    return $matches[0]?:array();
+}
+    
+    
